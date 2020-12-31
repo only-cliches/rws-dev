@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "carbon-icon-helpers",
+    "description": "Helpers used alongside icons for digital and software products using the Carbon Design System",
+    "author": "",
+    "version": "10.10.0",
+    "repo": {"type":"git","url":"git+https://github.com/carbon-design-system/carbon.git","directory":"packages/icon-helpers"},
+    "homepage": "https://github.com/carbon-design-system/carbon#readme",
+    "keywords": ["ibm","elements","carbon","carbon-elements","carbon-design-system","components","react"],
+    "license": "Apache-2.0",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-1zBg08e1p0DDuhLPylzccqEyckNzB2mlv1en4jIDv2tr346rzGy36wrNQ9yqpqOcyFqrVurpD5eMFEKvFAXhUQ=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-M8Zki+Z7NTkcJs9EqRUc9++eDKxzj4rrW5SKEDmfPpj9QN456uZa3Bo37Y9oaXhR7KwOtHEruSvO9P79VmTTSQ=="]
+    ]
+}

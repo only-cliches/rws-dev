@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "carbon-icons",
+    "description": "Icons for the Carbon Design System",
+    "author": "",
+    "version": "7.0.7",
+    "repo": {"type":"git","url":"git+https://github.com/carbon-design-system/carbon-icons.git"},
+    "homepage": "https://github.com/carbon-design-system/carbon-icons#readme",
+    "keywords": ["icons","bluemix","ibm","carbon"],
+    "license": "Apache-2.0",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-e5GaaS5COVXFZYgpy5PGKxK0Jl+Mcd+oOyyGN0M4mYN6ODE5o8d2qtPMwCGjFrnut02SFma13Ga1nP7kMLnD9w=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-EcLnnfu5LFbZvvzyJy101YRGO2W6caafCTNEpajVA3eOYBSQr6URAo+fEE5nVxq2ERocLo3sSPVHq3UX3HiuqA=="]
+    ]
+}

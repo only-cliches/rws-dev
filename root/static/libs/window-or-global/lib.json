@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "window-or-global",
+    "description": "Use either the window object in the browser or the global object in node.",
+    "author": {"name":"ruffle1986","email":"tf@purposeindustries.co"},
+    "version": "1.0.1",
+    "repo": {"type":"git","url":"git+https://github.com/purposeindustries/window-or-global.git"},
+    "homepage": "https://github.com/purposeindustries/window-or-global#readme",
+    "keywords": ["window","global","isomorphic","universal"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-m9Maf76DHn/cURLoSS606Zf3//TaNNpplLMUcUDL7KefpVvRXKZVQmcEe7u0wTJu8SkGFUjVYqiZimYxwtF31g=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-GZjZRWTzo4gBk0EgsDYmXZgyGAi4DG6HE7Ggsso2L2DMlhNxgBsctu5EZlOjxuH0L2wd9rW7Hja57CTg027LiQ=="]
+    ]
+}

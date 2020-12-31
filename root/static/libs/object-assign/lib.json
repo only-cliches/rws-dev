@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "object-assign",
+    "description": "ES2015 `Object.assign()` ponyfill",
+    "author": {"name":"Sindre Sorhus","email":"sindresorhus@gmail.com","url":"sindresorhus.com"},
+    "version": "4.1.1",
+    "repo": {"type":"git","url":"git+https://github.com/sindresorhus/object-assign.git"},
+    "homepage": "https://github.com/sindresorhus/object-assign#readme",
+    "keywords": ["object","assign","extend","properties","es2015","ecmascript","harmony","ponyfill","prollyfill","polyfill","shim","browser"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-a5UxwhSL5a4T+enkWeUzNwacyMfObGQQsbHYio000X0an8p3PYjT17WDQgRTvy6TA/SGTA5g3JMHKvF+pYzpfA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-0JszfGibF+JnXzX+7BxJhQBTTgDPto6Qe01vuwJovN+qR2rzpZthUjMuH/a9pPfxwyhr557buqoh6rnsIuMzEw=="]
+    ]
+}

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Reach Web Service Dev Portal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script data-main="/index.js" src="/static/libs/require.min.js" integrity="sha512-djQzm+m3ecAg59x178Mvd3nA/amG8evLM4l/Tt1EFcwhlzHFZz3gggapbcIXQASLC1doJJQCF+23lc8RtdOy2A==""></script>
+        <script>
+            require.config({
+                paths: {"axios":"/static/libs/axios/index.min","carbon-components":"/static/libs/carbon-components/index.min","carbon-components-react":"/static/libs/carbon-components-react/index.min","carbon-icon-helpers":"/static/libs/carbon-icon-helpers/index.min","carbon-icons":"/static/libs/carbon-icons/index.min","carbon-icons-react":"/static/libs/carbon-icons-react/index.min","classnames":"/static/libs/classnames/index.min","compute-scroll-into-view":"/static/libs/compute-scroll-into-view/index.min","csstype":"/static/libs/csstype/index.min","downshift":"/static/libs/downshift/index.min","flatpickr":"/static/libs/flatpickr/index.min","history":"/static/libs/history/index.min","hoist-non-react-statics":"/static/libs/hoist-non-react-statics/index.min","invariant":"/static/libs/invariant/index.min","isarray":"/static/libs/isarray/index.min","lodash.debounce":"/static/libs/lodash.debounce/index.min","lodash.findlast":"/static/libs/lodash.findlast/index.min","lodash.isequal":"/static/libs/lodash.isequal/index.min","lodash.omit":"/static/libs/lodash.omit/index.min","lodash.throttle":"/static/libs/lodash.throttle/index.min","mini-create-react-context":"/static/libs/mini-create-react-context/index.min","object-assign":"/static/libs/object-assign/index.min","path-to-regexp":"/static/libs/path-to-regexp/index.min","prop-types":"/static/libs/prop-types/index.min","react":"/static/libs/react/index.min","react-dom":"/static/libs/react-dom/index.min","react-is":"/static/libs/react-is/index.min","react-router":"/static/libs/react-router/index.min","react-router-dom":"/static/libs/react-router-dom/index.min","resize-observer-polyfill":"/static/libs/resize-observer-polyfill/index.min","resolve-pathname":"/static/libs/resolve-pathname/index.min","scheduler":"/static/libs/scheduler/index.min","tiny-invariant":"/static/libs/tiny-invariant/index.min","tiny-warning":"/static/libs/tiny-warning/index.min","use-resize-observer":"/static/libs/use-resize-observer/index.min","value-equal":"/static/libs/value-equal/index.min","warning":"/static/libs/warning/index.min","window-or-global":"/static/libs/window-or-global/index.min"},
+                onNodeCreated: function(node, config, module, path) {
+
+                    var sri = {};
+
+                    if (sri[module]) {
+                        node.setAttribute('integrity', sri[module]);
+                        node.setAttribute('crossorigin', 'anonymous');
+                    }
+                }
+            });
+        </script>
+        <link rel="stylesheet" href="/static/libs/carbon-components/carbon-components.css" />
+        <link rel="stylesheet" href="/static/libs/flatpickr/flatpickr.css" />
+        <link rel="stylesheet" href="/index.css" />
+    </head>
+    <body>
+        <div id="app"></div>
+    </body>
+</html>

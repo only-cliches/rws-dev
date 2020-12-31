@@ -1,0 +1,32 @@
+{
+    "api": 1,
+    "name": "carbon-components-react",
+    "description": "The Carbon Design System is IBM’s open-source design system for products and experiences.",
+    "author": "",
+    "version": "7.25.0",
+    "repo": {"type":"git","url":"git+https://github.com/carbon-design-system/carbon.git","directory":"packages/react"},
+    "homepage": "https://github.com/carbon-design-system/carbon#readme",
+    "keywords": ["react","carbon","carbon-components","ibm","carbon-design-system","components"],
+    "license": "Apache-2.0",
+    "dependencies": {
+        "classnames": "2.2.6",
+        "carbon-icons-react": "^10.22.0",
+        "warning": "^3.0.0",
+        "lodash.throttle": "^4.1.1",
+        "lodash.debounce": "^4.0.8",
+        "downshift": "5.2.1",
+        "invariant": "^2.2.3",
+        "flatpickr": "4.6.1",
+        "react-is": "^16.8.6",
+        "lodash.isequal": "^4.5.0",
+        "lodash.omit": "^4.5.0",
+        "window-or-global": "^1.0.1",
+        "lodash.findlast": "^4.5.0"
+    },
+    "files": [
+        ["index.min.js", "sha512-ijCG3e3nAB2C9bUQXQ7+h2hx+hekADdmF5tlZcu6GirDfR3F2VlKzUuVL1ehvg34gl4CAMXOzlt8RHtuqhZQQQ=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-UHDOpXXiA/yqbLf8fSk0dNvcmUf9gW7rHcA/znsvnyqkjnCA9xTkELzEVbhgCc6Mx49YI+DY3ZmJwTvcU879nQ=="]
+    ]
+}

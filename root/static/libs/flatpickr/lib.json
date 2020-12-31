@@ -1,0 +1,20 @@
+{
+    "api": 1,
+    "name": "flatpickr",
+    "description": "A lightweight, powerful javascript datetime picker",
+    "author": {"name":"Gregory","email":"gregory.mkv@gmail.com"},
+    "version": "4.6.9",
+    "repo": {"type":"git","url":"git+https://github.com/chmln/flatpickr.git"},
+    "homepage": "https://chmln.github.io/flatpickr",
+    "keywords": ["javascript","datetimepicker","calendar","date","time","picker","lightweight"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-i010M266T4mZRD3lnFkhmS4KQ6XT6PstsrxnWPLrjp3RCKB8Qnw6EDz4pY577ZwM0Z5sO2JQ6oS4wjmzhwoRcA=="],
+        ["flatpickr.min.css", "sha512-ik6mgSlLMxbuaOARqzKjOgu5jENOWEz6MDz5/XOxuFYObtscyxU+TrrH61KSCiT9ThDEi6vTxUXjtoZFdv198A=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-B5L1wkbkh3plfbXGa6uW4+fWhDoQmVOWqWc64N4aBCajywHKJLUJT04sdJ4Ki2Ly/Vb+rHDzGUIkK2PxbivdaQ=="],
+        ["flatpickr.css", "sha512-oiAslvEfqEdrIWO7KRwXC3VvIz/CAJQvWyhki1HBF8oy4jxCzw8/hpdsdmYem7GnRMpBujClAPqm5O1KEzebzg=="]
+    ]
+}

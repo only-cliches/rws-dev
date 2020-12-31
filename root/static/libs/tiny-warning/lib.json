@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "tiny-warning",
+    "description": "A tiny warning function",
+    "author": {"name":"Alex Reardon","email":"alexreardon@gmail.com"},
+    "version": "1.0.3",
+    "repo": {"type":"git","url":"git+https://github.com/alexreardon/tiny-warning.git"},
+    "homepage": "https://github.com/alexreardon/tiny-warning#readme",
+    "keywords": ["warning","warn"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-2Sed/iVGPU7ew6SKxp0T1jVivm7uiW0Fx9KX34YKfBS6mjb75SVyL7awVgqNhhefBol6aFAljc6kcHvJhmvmqg=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-9NJynbAlADntGtrAMBCQtp/zjWnmde9sZCPFXmgfl217TejXakAeBh+z163F3Y9a6G4h1gSFI9eb18U4w/NxUg=="]
+    ]
+}

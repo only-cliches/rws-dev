@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "axios",
+    "description": "Promise based HTTP client for the browser and node.js",
+    "author": {"name":"Matt Zabriskie"},
+    "version": "0.21.1",
+    "repo": {"type":"git","url":"git+https://github.com/axios/axios.git"},
+    "homepage": "https://github.com/axios/axios",
+    "keywords": ["xhr","http","ajax","promise","node"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-GxJlZBxuIN9lUtS28dWSBGU59ty7Z/6Ytm0NJJbbQNen4GbwI8QEaIJvLOnPIgT2oFDBsfhcDBmTt5OCergGZw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-fljoC6p+mvj56YFmWCGtF1M7rMYH4ueGuWx1japmkzpcHzgX/X/6lFajh7GKK/QmYzrpsuGdTlnLpL35UnM96g=="]
+    ]
+}

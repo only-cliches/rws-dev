@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "resize-observer-polyfill",
+    "description": "A polyfill for the Resize Observer API",
+    "author": {"name":"Denis Rul","email":"que.etc@gmail.com"},
+    "version": "1.5.1",
+    "repo": {"type":"git","url":"git+https://github.com/que-etc/resize-observer-polyfill.git"},
+    "homepage": "https://github.com/que-etc/resize-observer-polyfill",
+    "keywords": ["ResizeObserver","resize","observer","util","client","browser","polyfill","ponyfill"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-cXuFPgy+uegb5ziWSuAH3fMVphF05/HmJSakX2UqEaCmTmENd18wL9/CC3hMlALDDDfQe4bLo2j0v9KNMOgROA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-YhBQCtGlQ+HZRG1cgKGmTncFEvMsUWSj16zhvXi4gdOT6PHQ0hUAT+Fj2m7qiec2Pa7ZRRNZ1BOsdgnX4rgJ5A=="]
+    ]
+}

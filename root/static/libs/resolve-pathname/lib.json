@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "resolve-pathname",
+    "description": "Resolve URL pathnames using JavaScript",
+    "author": {"name":"Michael Jackson"},
+    "version": "3.0.0",
+    "repo": {"type":"git","url":"git+https://github.com/mjackson/resolve-pathname.git"},
+    "homepage": "https://github.com/mjackson/resolve-pathname#readme",
+    "keywords": [],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-HrFs8+hHiMUGFS6zduTrcPuShuWFVm/qrBf/Rf92IEDxBQbJ/0/deosCaC8TWG+eQE13u18BMWcpqaUZh6Dv7Q=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-98eGMqARSRNIqz2ExpfS7eapHOXjGj6y/Z8NHvDYmLoMMV8X2Kz6fXi58vFhwDdEHIjPTrAvW+ek6iBhXhxqVQ=="]
+    ]
+}

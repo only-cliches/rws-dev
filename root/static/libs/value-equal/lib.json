@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "value-equal",
+    "description": "Are these two JavaScript values equal?",
+    "author": {"name":"Michael Jackson"},
+    "version": "1.0.1",
+    "repo": {"type":"git","url":"git+https://github.com/mjackson/value-equal.git"},
+    "homepage": "https://github.com/mjackson/value-equal#readme",
+    "keywords": [],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-FUl+Wlm1HuMqOs0+r1n8GBGv1rmSK3TPUpSxhsvOcNr+X70AiAcndVW2BV6lvCblRMRY8C5o5vsToUSdnbF/Ww=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-4p6rxgzLr+A3y2LpgLWeP/NtE7Jb1xbd1tHwJNAUg6Aoquzr46cSoEU5L1vxZm2M0IGHotmo2N1qxVkUNcjbVA=="]
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "tiny-invariant",
+    "description": "A tiny invariant function",
+    "author": {"name":"Alex Reardon","email":"alexreardon@gmail.com"},
+    "version": "1.1.0",
+    "repo": {"type":"git","url":"git+https://github.com/alexreardon/tiny-invariant.git"},
+    "homepage": "https://github.com/alexreardon/tiny-invariant#readme",
+    "keywords": ["invariant","error"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-pQ88Hi+pkZZRC/fxcpAXgrKAd3r5GN4DR9Q2rRUKEVAAhrJ1VGsKSe8gqf7A71dGYvfRK1WW2Iw5SuFGHG5N2w=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-7F7+kxFWn4uBFLCO5YwhtUZEd+MxG7jf/94NXaOoRmvU9fpO7UzPPYHwzobRj/UsNKOmBL9hF8OqlbxoHy9p4Q=="]
+    ]
+}

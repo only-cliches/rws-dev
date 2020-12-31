@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "react-is",
+    "description": "Brand checking of React Elements.",
+    "author": "",
+    "version": "17.0.1",
+    "repo": {"type":"git","url":"git+https://github.com/facebook/react.git","directory":"packages/react-is"},
+    "homepage": "https://reactjs.org/",
+    "keywords": ["react"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-dgYHpZZpSXWQa7YLaMGCTNJoxR4aAtjvgj9I38oP19+G9txIXP05UUwkRy+riOjhZ7+vr4tG/stRHyAN3Fkrmw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-hvzIc/7jHFmuT5iJONVN2Nyenek3s02op+kOxhmIEncLHjQgQlhkARL2tnrWsrVe5iQHoFj69N9mhHD/xXiy2Q=="]
+    ]
+}

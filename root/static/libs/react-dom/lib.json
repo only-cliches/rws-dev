@@ -1,0 +1,21 @@
+{
+    "api": 1,
+    "name": "react-dom",
+    "description": "React package for working with the DOM.",
+    "author": "",
+    "version": "17.0.1",
+    "repo": {"type":"git","url":"git+https://github.com/facebook/react.git","directory":"packages/react-dom"},
+    "homepage": "https://reactjs.org/",
+    "keywords": ["react"],
+    "license": "MIT",
+    "dependencies": {
+        "scheduler": "^0.19.1",
+        "object-assign": "^4.1.1"
+    },
+    "files": [
+        ["index.min.js", "sha512-WiMmzUvCGInuxG/OVkfSSXyhDgstBWn7Q7oCM7nr2Qq3V9Evs278sznyB15sv8rDQ8+uwLqhn/3RfWpDRn1hAw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-Aqu4I2QN61mH7JRqVFjAySU98NzrpGxXDmYpFUzT+wLr1RTTqsrQJydpRs7LdKV6rQvPMavblZZ+uBHTDWDT3Q=="]
+    ]
+}

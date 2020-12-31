@@ -1,0 +1,24 @@
+{
+    "api": 1,
+    "name": "carbon-components",
+    "description": "The Carbon Design System is IBM’s open-source design system for products and experiences.",
+    "author": "",
+    "version": "10.25.0",
+    "repo": {"type":"git","url":"git+https://github.com/carbon-design-system/carbon.git","directory":"packages/components"},
+    "homepage": "https://www.carbondesignsystem.com/",
+    "keywords": ["carbon","component","components","css","html","ibm","javascript","js","library","pattern","patterns","sass","scss","style guide","eyeglass-module","carbon-design-system","react"],
+    "license": "Apache-2.0",
+    "dependencies": {
+        "warning": "^3.0.0",
+        "lodash.debounce": "^4.0.8",
+        "flatpickr": "4.6.1"
+    },
+    "files": [
+        ["index.min.js", "sha512-QuNDPY8S8NPSzINTQxNe5HMnCIfDNr4kGz6k0CJFH9f6xTLr+o1DfSogT1F4p107JXlYwsCEEAaAbCFN668Ohg=="],
+        ["carbon-components.min.css", "sha512-dBK0XNIaVqNNSBgLqVMHK3EC53iz7GlnjwlREdSUuw4ZQveU4frNcyZhWcOmNhRaXsghxpSIfq4xUUvZ/S6wMA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-6H7LonxvaSzK7Y7HA5aA3IK0YjLK4mko+ZM0L+56voHO8hyoQro3bKhCYUWqlT/0i4L2m0RVxWxO2zAJG9qaiw=="],
+        ["carbon-components.css", "sha512-P5K5Ln3OdzsK+GyFAacweeW8Q/Y4wqvo0T2OYFbbCAuQrH/r4AA9HejoiNMwAGzGaSQKUkf7ZPsKfov/czk9Nw=="]
+    ]
+}

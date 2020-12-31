@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "csstype",
+    "description": "Strict TypeScript and Flow types for style based on MDN data",
+    "author": {"name":"Fredrik Nicol","email":"fredrik.nicol@gmail.com"},
+    "version": "3.0.5",
+    "repo": {"type":"git","url":"git+https://github.com/frenic/csstype.git"},
+    "homepage": "https://github.com/frenic/csstype#readme",
+    "keywords": ["css","style","typescript","flow","typings","types","definitions"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+ 
+    ],
+    "devFiles": [
+  
+    ]
+}

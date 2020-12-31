@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "use-resize-observer",
+    "description": "A React hook that allows you to use a ResizeObserver to measure an element's size.",
+    "author": {"name":"Viktor Hubert","email":"contact@hubertviktor.com"},
+    "version": "7.0.0",
+    "repo": {"type":"git","url":"git+ssh://git@github.com/ZeeCoder/use-resize-observer.git"},
+    "homepage": "https://github.com/ZeeCoder/use-resize-observer#readme",
+    "keywords": [],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-zUtg+XLE3R4+g2liaxdmEYMbqITwcVwy6BOmGxx4Fvsx+1Uq1pC09c2CGZWpQBamaPeIl4Ns5biIAcRvGMTv9A=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-fEcab/mhb2aW7uaCZt+TX/UbePk9uGrf7phHyF1KFyn3sWbnHdF+u6nSTCO6OUw0RgOwzH7joBLr5g2eccbERA=="]
+    ]
+}

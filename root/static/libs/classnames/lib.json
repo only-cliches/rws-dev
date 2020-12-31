@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "classnames",
+    "description": "A simple utility for conditionally joining classNames together",
+    "author": {"name":"Jed Watson"},
+    "version": "2.2.6",
+    "repo": {"type":"git","url":"git+https://github.com/JedWatson/classnames.git"},
+    "homepage": "https://github.com/JedWatson/classnames#readme",
+    "keywords": ["react","css","classes","classname","classnames","util","utility"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-Mq5utRuLthSXj2gHA7d9dXeLPPrZWVrqpMRKt2kCuz1gTzqbh5eAIz2JeNd1zogntiaM3ifN64q2aFXqOsk0nw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-twNpoVrx4+zEqjIz5EbtobRbcWq+IPbN67ngO8DaWLwsDA5A9ptZFU+mIfIA1Rrfy2GVOoOY8KUNcLbQsy1IYg=="]
+    ]
+}

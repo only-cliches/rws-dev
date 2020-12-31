@@ -1,0 +1,23 @@
+{
+    "api": 1,
+    "name": "history",
+    "description": "Manage session history with JavaScript",
+    "author": {"name":"Michael Jackson"},
+    "version": "5.0.0",
+    "repo": {"type":"git","url":"git+https://github.com/ReactTraining/history.git"},
+    "homepage": "https://github.com/ReactTraining/history#readme",
+    "keywords": ["history","location"],
+    "license": "MIT",
+    "dependencies": {
+        "tiny-invariant": "^1.0.2",
+        "tiny-warning": "^1.0.0",
+        "value-equal": "^1.0.1",
+        "resolve-pathname": "^3.0.0"
+    },
+    "files": [
+        ["index.min.js", "sha512-C8rZrtSh6PdiG1GNWrDWwjroiYnjNyotBI10tOp7CUWxzr6qdA9Or8Se9yHuB9nO7202ivo9ZSYkjW8bzWzN3w=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-DndtBTNNMAvffU9Hr2T+Us9To/ucs25lu6PppDPXS2jBCgC3yZNrmtoK2k9gi1IKZ7MGYcNndTg2W8frfEbENw=="]
+    ]
+}

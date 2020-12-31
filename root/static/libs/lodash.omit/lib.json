@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "lodash.omit",
+    "description": "The lodash method `_.omit` exported as a module.",
+    "author": {"name":"John-David Dalton","email":"john.david.dalton@gmail.com","url":"http://allyoucanleet.com/"},
+    "version": "4.5.0",
+    "repo": {"type":"git","url":"git+https://github.com/lodash/lodash.git"},
+    "homepage": "https://lodash.com/",
+    "keywords": ["lodash-modularized","omit"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-vglIdkh8PFl9z0tvuXSs6grmeGEyy8GiRSZ9AipRk49ifCgYka2z+RFBe7TECf7ciQr50SjlgBRIKIpZuho8VA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-kJoBkv2xBhz/DoUvm4hF29KgbUEg8CkDn+u1egbT9tUwCSfzhDb3YFfEZ+/2eHPljefB0ec9Vq5zwb6Pb+kF+g=="]
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "isarray",
+    "description": "Array#isArray for older browsers",
+    "author": {"name":"Julian Gruber","email":"mail@juliangruber.com","url":"http://juliangruber.com"},
+    "version": "2.0.5",
+    "repo": {"type":"git","url":"git://github.com/juliangruber/isarray.git"},
+    "homepage": "https://github.com/juliangruber/isarray",
+    "keywords": ["browser","isarray","array"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-8O5hVFw0OaI5XCvVdwYlU0MyKvaTI5IfR9Dz3yhtx4CU4G9qyx4fY86WWahEGiObG3D7laHUWI4Mc+eJu3VpOw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-+i50RcimUbIOdsQEQpOK/WuTTrMV23GcHN+YyE0NU4oAen26zJnxRFMvPIWxxwtrLeqcKxO2qcz+AMoMDqmX0A=="]
+    ]
+}

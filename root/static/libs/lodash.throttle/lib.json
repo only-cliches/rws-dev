@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "lodash.throttle",
+    "description": "The lodash method `_.throttle` exported as a module.",
+    "author": {"name":"John-David Dalton","email":"john.david.dalton@gmail.com","url":"http://allyoucanleet.com/"},
+    "version": "4.1.1",
+    "repo": {"type":"git","url":"git+https://github.com/lodash/lodash.git"},
+    "homepage": "https://lodash.com/",
+    "keywords": ["lodash-modularized","throttle"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-DcBDJNHTscvAmpyjk/gNkc/KYXGP1FNDceIBGQvVJRCoe0qYztJsTv5y7RIsOIzxVXOVU2G/mfrzzGvCn05U9Q=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-6K9MsDHaw5GQhsU9XurQTfdxfhbXDr+5l1IK5BdLpGU/nbWEOo4/jBghdK0WUEMhw1lLkGXmYsjY+6/gFa/2CA=="]
+    ]
+}

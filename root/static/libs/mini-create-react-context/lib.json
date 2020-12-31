@@ -1,0 +1,20 @@
+{
+    "api": 1,
+    "name": "mini-create-react-context",
+    "description": "Smaller Polyfill for the proposed React context API",
+    "author": {"name":"StringEpsilon"},
+    "version": "0.4.1",
+    "repo": {"type":"git","url":"git+https://github.com/StringEpsilon/mini-create-react-context.git"},
+    "homepage": "https://github.com/StringEpsilon/mini-create-react-context#readme",
+    "keywords": ["react","context","contextTypes","polyfill","ponyfill"],
+    "license": "MIT",
+    "dependencies": {
+        "tiny-warning": "^1.0.3"
+    },
+    "files": [
+        ["index.min.js", "sha512-lNcGYI+KGM/IFtSHPCOLyzdcUNcrecJ1icpzJZx5v99qkWyQyveuB6eNmvG1HZCVpfdqj0HLhjGY1DjD+YPTbA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-wwHWd4/e/2OT2xBeWjHJV/IhTLfww89SlNJqiMuYFUipWzzb8LAzb5mKfdAWueKaHjoXlnwADxTdg4tLjuxlfA=="]
+    ]
+}

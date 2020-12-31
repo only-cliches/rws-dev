@@ -1,0 +1,27 @@
+{
+    "api": 1,
+    "name": "react-router",
+    "description": "Declarative routing for React",
+    "author": {"name":"React Training","email":"hello@reacttraining.com"},
+    "version": "5.2.0",
+    "repo": {"type":"git","url":"git+https://github.com/ReactTraining/react-router.git"},
+    "homepage": "https://github.com/ReactTraining/react-router#readme",
+    "keywords": ["react","router","route","routing","history","link"],
+    "license": "MIT",
+    "dependencies": {
+        "hoist-non-react-statics": "^3.1.0",
+        "react-is": "^16.6.0",
+        "path-to-regexp": "^1.7.0",
+        "tiny-invariant": "^1.0.2",
+        "mini-create-react-context": "^0.4.0",
+        "tiny-warning": "^1.0.0",
+        "history": "^4.9.0",
+        "prop-types": "^15.6.2"
+    },
+    "files": [
+        ["index.min.js", "sha512-9LPSUKGC35kYLnpMKS4OT/hc60jpG1PeLMUIlI/j0uc6HLgQzBvWfKchSLC0oLSM3nZjeLvQJJjlAQTYRCanYg=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-turrCsuyeXTaEyrNK2c/UMTuQfY5DBc1K+95WOlAf6cUsU4Dq/dOnn08NTt6oPI4E7M/dM0RzVdWb+ulBF85QA=="]
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "scheduler",
+    "description": "Cooperative scheduler for the browser environment.",
+    "author": "",
+    "version": "0.20.1",
+    "repo": {"type":"git","url":"git+https://github.com/facebook/react.git","directory":"packages/scheduler"},
+    "homepage": "https://reactjs.org/",
+    "keywords": ["react"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-Ct38N3IHlAHl8s1gKIMsniExOLpG6BmMch2wvM7oZdCVcvqVwMcGpeNJe8GsVxNnz6UDAdPWKtgl5t0BnfGF8Q=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-zUnYoe6+FzuiGU/TnWIVxxNIthlDE2hZLLj6av38YHL8GKR5n7YfEIDwAwuA1RkB9zJNNb+ksluz3GKiMJ5wNQ=="]
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "api": 1,
+    "name": "path-to-regexp",
+    "description": "Express style path to RegExp utility",
+    "author": "",
+    "version": "6.2.0",
+    "repo": {"type":"git","url":"git+https://github.com/pillarjs/path-to-regexp.git"},
+    "homepage": "https://github.com/pillarjs/path-to-regexp#readme",
+    "keywords": ["express","regexp","route","routing"],
+    "license": "MIT",
+    "dependencies": {
+        "isarray": "0.0.1"
+    },
+    "files": [
+        ["index.min.js", "sha512-CPrlY/JzzA+PLG+m5kpAylmaRXGUhb7UuCSrfKWRxc3N7FOxzBxtEjdaVrP0P8nSU5bbB/Cz3w4NQH+HZDCvOA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-0DxvwPlmGlujP7rE3fimE+zlKMcFj2yrfa7C8vrUrZycLeQbc7wcZZrf95DbP9tnc4Tv+pu5rRolnrJxKn5JBg=="]
+    ]
+}

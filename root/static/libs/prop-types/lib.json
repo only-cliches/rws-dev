@@ -1,0 +1,21 @@
+{
+    "api": 1,
+    "name": "prop-types",
+    "description": "Runtime type checking for React props and similar objects.",
+    "author": "",
+    "version": "15.7.2",
+    "repo": {"type":"git","url":"git+https://github.com/facebook/prop-types.git"},
+    "homepage": "https://facebook.github.io/react/",
+    "keywords": ["react"],
+    "license": "MIT",
+    "dependencies": {
+        "react-is": "^16.8.1",
+        "object-assign": "^4.1.1"
+    },
+    "files": [
+        ["index.min.js", "sha512-OVnSonMs5CRjjW+1qmnLaMY0TwRFC/SzhWKRTw8IDM2oXjm9zfj4+AUT2Mga/ILgtEI/V9xTxiGHMhCnLSvH8A=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-/P+lgBwEToxtcghSsderSKwrMTXKfSJdC6LYDAdkVCVk/l/7fG7lpDYWX0WswP5R9+nZ9TfQPrM8rQSNfy45NQ=="]
+    ]
+}

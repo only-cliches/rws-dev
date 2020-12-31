@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "lodash.debounce",
+    "description": "The lodash method `_.debounce` exported as a module.",
+    "author": {"name":"John-David Dalton","email":"john.david.dalton@gmail.com","url":"http://allyoucanleet.com/"},
+    "version": "4.0.8",
+    "repo": {"type":"git","url":"git+https://github.com/lodash/lodash.git"},
+    "homepage": "https://lodash.com/",
+    "keywords": ["lodash-modularized","debounce"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-1B8QC7cC9o/b6B2sB74KfU/cPY7KK2EGA8Bgut5Rwo6EWzF1FMl8cOX3FGI4yGIP72WzyP+BChKMUKxx0CO+wA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-l5QmwoKPtTbcOlFeoCWInWXk5xO/sNdvTZu5SRiHw0oAerOxGSH8zHji6LIhNCjP1WK+dVi/6Ym9dpMEBYWL/A=="]
+    ]
+}

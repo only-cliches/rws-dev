@@ -1,0 +1,20 @@
+{
+    "api": 1,
+    "name": "react",
+    "description": "React is a JavaScript library for building user interfaces.",
+    "author": "",
+    "version": "17.0.1",
+    "repo": {"type":"git","url":"git+https://github.com/facebook/react.git","directory":"packages/react"},
+    "homepage": "https://reactjs.org/",
+    "keywords": ["react"],
+    "license": "MIT",
+    "dependencies": {
+        "object-assign": "^4.1.1"
+    },
+    "files": [
+        ["index.min.js", "sha512-7lYGPNu3bM+YccQ468evYQijZ9GqzfjL1mk5MpxvI1Wj6po0dcaagCkm+4sQzI6pEWNOj3a3CRn8H528KTHjpQ=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-HeKB3Q13BemvryX2hGz0h80G94dnIHI5+QRke582gatK5QBWNAVf0iebE2VVz2FPMQH39jb1JFxgjQxTyjs33w=="]
+    ]
+}

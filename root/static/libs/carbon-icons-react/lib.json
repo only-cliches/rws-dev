@@ -1,0 +1,21 @@
+{
+    "api": 1,
+    "name": "carbon-icons-react",
+    "description": "React components for icons in digital and software products using the Carbon Design System",
+    "author": "",
+    "version": "10.22.0",
+    "repo": {"type":"git","url":"git+https://github.com/carbon-design-system/carbon.git","directory":"packages/icons-react"},
+    "homepage": "https://github.com/carbon-design-system/carbon#readme",
+    "keywords": ["ibm","elements","carbon","carbon-elements","carbon-design-system","components","react"],
+    "license": "Apache-2.0",
+    "dependencies": {
+        "prop-types": "^15.7.2",
+        "carbon-icon-helpers": "^10.10.0"
+    },
+    "files": [
+        ["index.min.js", "sha512-pbTtapst8FfLYzT1aowTu/XCl+SQIhJtloHQYOFThvGk9aRi7AYZoEwwss/C47Y01nZbI3Z0Mi5/WRJ5BaVgrw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-GFxulwl/gIDIEO95vR/LFd1SfuvtRz1HTbFdJkj9lqoaHta79QdV1ntOy+poldsqRmvwouBMQYK9H45euq4slg=="]
+    ]
+}

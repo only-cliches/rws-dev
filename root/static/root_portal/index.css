@@ -1,0 +1,34 @@
+.home-tiles *, .home-tiles {
+    text-decoration: none !important;
+}
+
+.bx--breadcrumb-item {
+    display: inline;
+}
+
+.bx--tile {
+    transition: all 250ms;
+    background: rgba(255,255,255, 0.5) !important;
+}
+
+.bx--tile:hover {
+    background: rgba(255,255,255, 1) !important;
+}
+
+body {
+    background: url("/photo-1607543551362-9c1e4f4ac287.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0) !important;
+    min-height: 100vh;
+}
+
+.breadcrumbs {
+    background: white;
+    padding: 10px;
+}

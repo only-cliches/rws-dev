@@ -1,0 +1,20 @@
+{
+    "api": 1,
+    "name": "hoist-non-react-statics",
+    "description": "Copies non-react specific statics from a child component to a parent component",
+    "author": {"name":"Michael Ridgway","email":"mcridgway@gmail.com"},
+    "version": "3.3.2",
+    "repo": {"type":"git","url":"git://github.com/mridgway/hoist-non-react-statics.git"},
+    "homepage": "https://github.com/mridgway/hoist-non-react-statics#readme",
+    "keywords": ["react"],
+    "license": "BSD-3-Clause",
+    "dependencies": {
+        "react-is": "^16.7.0"
+    },
+    "files": [
+        ["index.min.js", "sha512-hPwoGvWWPkHYa2v4MVUVum4TgfLSMWkTDoxpY7xaVDvQMQ33drRFb0gvyxZWfALIwf0cGi5nDb6Gllaf6pZKEA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-NUE89lP2SKz1B3A20lNHegaIggLivB4U5wRuRY1DdFFw/NYwNphgYnlIv6/xHkhyC45B6JmHm2uw5LlXPfoPtw=="]
+    ]
+}

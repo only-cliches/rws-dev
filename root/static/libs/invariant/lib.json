@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "invariant",
+    "description": "invariant",
+    "author": {"name":"Andres Suarez","email":"zertosh@gmail.com"},
+    "version": "2.2.4",
+    "repo": {"type":"git","url":"git+https://github.com/zertosh/invariant.git"},
+    "homepage": "https://github.com/zertosh/invariant#readme",
+    "keywords": ["test","invariant"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-ue1l9YhXIiQWzGsOd7hETlPQX2I8q2a/fqJHcnd5XmDrQs+d2SH4R7ZtnXL54zTJ1nV2valdQGoBM0MJ2Uq97Q=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-YAiTZ4pNJI4Wnx5YkODpg2iLo6dgrzvF11KqWEC7KWQFPva3owPBnH9lr3ibLO58zer/3qYSp8ROaxquDKZgAQ=="]
+    ]
+}

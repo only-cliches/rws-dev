@@ -1,0 +1,24 @@
+{
+    "api": 1,
+    "name": "react-router-dom",
+    "description": "DOM bindings for React Router",
+    "author": {"name":"React Training","email":"hello@reacttraining.com"},
+    "version": "5.2.0",
+    "repo": {"type":"git","url":"git+https://github.com/ReactTraining/react-router.git"},
+    "homepage": "https://github.com/ReactTraining/react-router#readme",
+    "keywords": ["react","router","route","routing","history","link"],
+    "license": "MIT",
+    "dependencies": {
+        "tiny-invariant": "^1.0.2",
+        "tiny-warning": "^1.0.0",
+        "prop-types": "^15.6.2",
+        "history": "^4.9.0",
+        "react-router": "5.2.0"
+    },
+    "files": [
+        ["index.min.js", "sha512-Gr+e8DX/3hF6mND7S012ZeGqaGRYlBGEmClMpnpL65G8luI3pciD4LZev6Lzt/eeLqwECoJgasCcbfx/j/cXdQ=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-7I6fGXKKdwF5pYlZ5HWfiNT+fYRmorrG8WidCL0znghLew9V8iP/pbq48M7EENk4i8ar97wLvtwAKiaoLq/jDA=="]
+    ]
+}

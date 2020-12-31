@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "lodash.isequal",
+    "description": "The Lodash method `_.isEqual` exported as a module.",
+    "author": {"name":"John-David Dalton","email":"john.david.dalton@gmail.com","url":"http://allyoucanleet.com/"},
+    "version": "4.5.0",
+    "repo": {"type":"git","url":"git+https://github.com/lodash/lodash.git"},
+    "homepage": "https://lodash.com/",
+    "keywords": ["lodash-modularized","isequal"],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-In/h6RqazyXUA0uGGQ/1PqDgfTjqd/8cHglV/9wOB8mezW/TMDJMsYhzWGm961vtYmdByRrqaC1jUNC/1A8kXw=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-iLNHLIw0uwOo7g9xAU1qjvg8P9HyzOpRxTSWkchOW43Xmz6ohIPVxYwkfd5TfdDUmcecj/5ZsOhrmBWJL4c0nA=="]
+    ]
+}
