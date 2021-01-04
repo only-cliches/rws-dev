@@ -1,23 +1,36 @@
+
+use crate::root_storage::RootServerStorage;
+use deno::worker::MainWorker;
+use tokio::sync::Mutex;
+use deno_core::RuntimeOptions;
+use root_storage::sqlite::SQLiteStore;
+use tokio::stream::StreamExt;
+use std::rc::Rc;
 use actix_web::{HttpResponse, guard};
 use actix_http::http::{StatusCode, header::DispositionType};
 use actix_web::http::header::ContentDisposition;
 use core::cell::RefCell;
-use std::path::PathBuf;
+
 use actix::{Actor, StreamHandler};
 use actix_web_actors::ws;
 use actix_web::{HttpRequest, web, Result};
 use tokio::task::LocalSet;
 use tokio::runtime::*;
-use tokio::time::*;
-use deno_core::*;
-use futures::{StreamExt};
-use std::env;
 use actix_files as fs;
-
 use serde::{Deserialize, Serialize};
+use std::env;
+use std::path::PathBuf;
+
+pub mod root_storage;
+pub mod utils;
+pub mod deno;
 
 #[macro_use]
 extern crate lazy_static;
+#[macro_use]
+extern crate async_trait;
+#[macro_use] 
+extern crate log;
 
 lazy_static! {
     /// This is an example for using doc comment attributes
@@ -30,7 +43,21 @@ lazy_static! {
         dir
     };
     static ref DEV_MODE: bool = true;
+    static ref DATASTORE: Mutex<RefCell<SQLiteStore>> = {
+        let mut app_dir = ROOT_DIR.clone();
+        app_dir.push("root_db.sqlite");
+        Mutex::new(RefCell::new(SQLiteStore::new(app_dir).unwrap()))
+    };
+    // static ref DATASTORE: Mutex<RefCell<RocksDBStore>> = {
+    //     let mut app_dir = ROOT_DIR.clone();
+    //     app_dir.push("root_db");
+    //     println!("OPEN {:?}", app_dir);
+    //     let rocks = RocksDBStore::new(app_dir).unwrap();
+    
+    //     Mutex::new(RefCell::new(rocks))
+    // };
 }
+
 
 struct MyWs;
 
@@ -55,7 +82,7 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for MyWs {
 }
 
 async fn main_handler(
-    ctx: actix_web::web::Data<RefCell<JsRuntime>>,
+    // ctx: actix_web::web::Data<(RefCell<JsRuntime>, Mutex<RefCell<RocksDBStore>>)>,
     req: HttpRequest,
     mut body: actix_web::web::Payload,
 ) -> actix_web::HttpResponse {
@@ -108,13 +135,15 @@ async fn main_handler(
         </script>"##)
 }
 
+
+
 // rusty_v8::isolate::OwnedIsolate
-fn new_js_context() -> RefCell<JsRuntime> {
-    RefCell::new(JsRuntime::new(RuntimeOptions::default()))
-}
+// fn new_js_context() -> RefCell<JsRuntime> {
+//     RefCell::new(JsRuntime::new(RuntimeOptions::default()))
+// }
 
 async fn service_handler(
-    ctx: actix_web::web::Data<JsRuntime>,
+    // ctx: actix_web::web::Data<JsRuntime>,
     req: HttpRequest,
     web::Path((app_name, endpoint, )): web::Path<(String, String, )>,
 ) -> actix_web::HttpResponse {
@@ -163,6 +192,88 @@ async fn dev_handler(
     }
 }
 
+
+#[derive(Deserialize)]
+struct DBRequest {
+    pub namespace: String,
+    pub action: String,
+    pub key: Option<String>,
+    pub value: Option<String>,
+    pub from: Option<String>,
+    pub to: Option<String>
+}
+
+async fn db_handler(
+    // ctx: actix_web::web::Data<Mutex<RefCell<RocksDBStore>>>,
+    req: HttpRequest,
+    info: web::Json<DBRequest>
+) -> actix_web::HttpResponse {
+
+    match info.action.as_str() {
+        "put" => {
+            match &info.key {
+                Some(key) => {
+                    match &info.value {
+                        Some(value) => {
+                            if key.len() == 0 || value.len() == 0 {
+                                return actix_web::HttpResponse::InternalServerError().body("key and value must exist!");
+                            }
+                            match (*DATASTORE).lock().await.borrow_mut().put(&info.namespace, key, value.as_bytes().to_vec()).await {
+                                Ok(_x) => {
+                                    return actix_web::HttpResponse::Ok().body("")
+                                },
+                                Err(_e) => {
+                                    return actix_web::HttpResponse::InternalServerError().body("")
+                                }
+                            }
+                        },
+                        None => return actix_web::HttpResponse::InternalServerError().body("key and value must exist!")
+                    }
+                },
+                None => return actix_web::HttpResponse::InternalServerError().body("key and value must exist!")
+            }
+        },
+        "get" => {
+            match &info.key {
+                Some(key) => {
+                    match (*DATASTORE).lock().await.get_mut().get(&info.namespace, key).await {
+                        Some(value) => {
+                            return actix_web::HttpResponse::Ok().body(String::from(unsafe { std::str::from_utf8_unchecked(&value[..])}))
+                        },
+                        None => {
+                            return actix_web::HttpResponse::Ok().body("")
+                        }
+                    }
+                },
+                None => return actix_web::HttpResponse::InternalServerError().body("key must exist!")
+            }
+        },
+        _ => return actix_web::HttpResponse::InternalServerError().body("Uknown request")
+    }
+
+    // match info.action.as_str() {
+    //     "put" => {
+
+    //     },
+    //     "delete" => {
+
+    //     },
+    //     "get" => {
+
+    //     },
+    //     "all" => {
+
+    //     },
+    //     "next" => {
+
+    //     },
+    //     "scan" => {
+
+    //     },
+    //     _ => { actix_web::HttpResponse::NotAcceptable().body("") }
+    // }
+}
+
 async fn spa_handler() -> fs::NamedFile {
     // 1.
     let mut index_html = ROOT_DIR.clone();
@@ -181,13 +292,7 @@ async fn spa_handler() -> fs::NamedFile {
 
 fn main() {
 
-    if *DEV_MODE {
-
-    } else {
-        panic!()
-    }
-
-    println!("ROOT DIR {:#?}", ROOT_DIR.display());
+    
 
     let mut tokio_runtime = Builder::new()
         .basic_scheduler()
@@ -195,10 +300,16 @@ fn main() {
         .build()
         .unwrap();
 
+
     let local = LocalSet::new();
     let system_fut = actix_rt::System::run_in_tokio("main", &local);
     local.block_on(&mut tokio_runtime, async {
         tokio::task::spawn_local(system_fut);
+
+        let mut worker = MainWorker::new();
+        worker.bootstrap();
+
+        // worker.run_event_loop().await.unwrap();
 
         let _ = actix_web::HttpServer::new(|| {
 
@@ -212,9 +323,10 @@ fn main() {
             let dev_files = fs::Files::new("/", dev_dir).disable_content_disposition().index_file("index.html");
 
             actix_web::App::new()
-                .data(new_js_context())
                 .route("/service/{app_name}/{endpoint}", web::get().to(service_handler))
                 .route("/root/{page}/{action}", web::post().to(dev_handler))
+                .route("/datastore", web::post().to(db_handler))
+                .route("/root_session", web::get().to(db_handler))
                 .service(static_files)
                 .service(dev_files)
                 .default_service(

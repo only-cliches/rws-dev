@@ -22,16 +22,13 @@ exec("ls -1", (error, stdout, stderr) => {
         paths[lib] = `/static/libs/${lib}/index.min`;
 
         const lib_json = JSON.parse(fs.readFileSync(path.join(__dirname, lib, "lib.json")).toString());
-        lib_json.devFiles.forEach((file) => {
+        lib_json.files.forEach((file) => {
             if (file[0] == "index.min.js") {
                 sri[lib] = file[1];
             }
         });
     });
-/*
-    console.log(JSON.stringify(paths));
-    console.log(JSON.stringify(sri));
-*/
+
     console.log(`
         require.config({
             paths: ${JSON.stringify(paths)},

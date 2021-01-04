@@ -36,7 +36,7 @@ require([
 
         const history = reactRouter.useHistory();
 
-        return  h(reactRouter.Link, {to: href, className: "home-tiles", style: { backdropFilter: "blur(4px)", display: "inline-block", margin: 10, flexGrow: 1, border: "1px solid black"}}, 
+        return  h(reactRouter.Link, {to: href, className: "home-tiles", style: { backdropFilter: "blur(4px)", "-webkit-backdropFilter": "blur(4px)", display: "inline-block", margin: 10, flexGrow: 1, border: "1px solid black"}}, 
             h(carbon.ClickableTile, {href: "#"}, h("div", {style: {minWidth: 280, minHeight: 80, display: "flex", flexDirection: "row", justifyContent: "flex-start"}}, 
                 h(icon, {style: {position: "relative", top: "2px"}}),
                 h("div", {style: {position: "relative", top: "-2px", marginLeft: 10}}, 

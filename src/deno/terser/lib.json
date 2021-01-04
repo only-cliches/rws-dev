@@ -1,0 +1,20 @@
+{
+    "api": 1,
+    "name": "terser",
+    "description": "JavaScript parser, mangler/compressor and beautifier toolkit for ES6+",
+    "author": {"name":"Mihai Bazon","email":"mihai.bazon@gmail.com","url":"http://lisperator.net/"},
+    "version": "5.5.1",
+    "repo": {"type":"git","url":"git+https://github.com/terser/terser.git"},
+    "homepage": "https://terser.org",
+    "keywords": ["uglify","terser","uglify-es","uglify-js","minify","minifier","javascript","ecmascript","es5","es6","es7","es8","es2015","es2016","es2017","async","await"],
+    "license": "BSD-2-Clause",
+    "dependencies": {
+        "source-map": "~0.7.2"
+    },
+    "files": [
+        ["index.min.js", "sha512-z1RnjTD0iczn+nD4zGTFostuDda6ZCCXaRAlrv/PA2r2x+nhhjXaxqqgxlMT7a6e08Wu1kWShwE4/8baV3oyyA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-cyLuRkl21RGFynwklhseSqkrfTSeFA3XDpi+jYAzOrcd4q+hOLhepRoz1YPrxftAf/iBb4AjyhdabHNi8zQJIQ=="]
+    ]
+}

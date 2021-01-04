@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "source-map",
+    "description": "Generates and consumes source maps",
+    "author": {"name":"Nick Fitzgerald","email":"nfitzgerald@mozilla.com"},
+    "version": "0.7.3",
+    "repo": {"type":"git","url":"git+ssh://git@github.com/mozilla/source-map.git"},
+    "homepage": "https://github.com/mozilla/source-map",
+    "keywords": [],
+    "license": "BSD-3-Clause",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-MRbyzTaS8lAX+Js7b/KusUicpt2cLU/Dapx+F/30GJyzGa3eFIR6r6AlaglcgRfBD0iLr/Wf81caH24/qf4N4g=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-DaffLknqmScwvvZR6rk/5V/VgM1kTPj127gxKJ7iO9CuSbJRV59r+D3vXOv015tXH1S1YTmLnNFAjxl4ZHB2Aw=="]
+    ]
+}

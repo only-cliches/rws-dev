@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "typescript",
+    "description": "TypeScript is a language for application scale JavaScript development",
+    "author": {"name":"Microsoft Corp."},
+    "version": "4.1.3",
+    "repo": {"type":"git","url":"git+https://github.com/Microsoft/TypeScript.git"},
+    "homepage": "https://www.typescriptlang.org/",
+    "keywords": ["TypeScript","Microsoft","compiler","language","javascript"],
+    "license": "Apache-2.0",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-EBLQ5d4El3EBIw2R4GXQpTgcDPNlFcq+bbr7cSfVGNX1uAwx1JFL3Z83OWWWUTWG7b5bBM91S1zJ6LCnShAY7g=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-k2YG5mPM+LhwgSQO71SPnzt7xvj2mBDhrIjLsdHkBC0TM+QMF1FkvVpMQ1SKb8frWy0bRHpDRAqttsxE9MDf3A=="]
+    ]
+}

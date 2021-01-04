@@ -1,0 +1,18 @@
+{
+    "api": 1,
+    "name": "acorn",
+    "description": "ECMAScript parser",
+    "author": "",
+    "version": "8.0.4",
+    "repo": {"type":"git","url":"git+https://github.com/acornjs/acorn.git"},
+    "homepage": "https://github.com/acornjs/acorn",
+    "keywords": [],
+    "license": "MIT",
+    "dependencies": {    },
+    "files": [
+        ["index.min.js", "sha512-qK3+44g2u6k3zRbRR/z/wv1XguYO04J2f6LSh/RyceF17cLIp1vCggNSTgboCgm0D52YJzlgUDkxEUZDa3rEPA=="]
+    ],
+    "devFiles": [
+        ["index.js", "sha512-amdukseA2bkD4r5gJbcecneaCAsU8OYlMQ2+vrKhnWCedmE0m+mZ58MTmZysnagibSRpVjs65rf7ODwifBkZkQ=="]
+    ]
+}
