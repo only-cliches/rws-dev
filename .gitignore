@@ -14,3 +14,5 @@ Cargo.lock
 
 /target
 .DS_Store
+/webpack-compiler/node_modules
+/webpack-compiler/libs
