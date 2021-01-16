@@ -1,8 +1,8 @@
-define("/page_themes/index.js", ["react", "/services.js"], (react, services) => {
+define("/page_themes/index.js", ["react", "/services.js", "/page.js"], (react, services, page) => {
     const h = react.createElement;
 
     return {
-        list: h("div", {}, "THEME LIST MODULE"),
-        item: h("div", {}, "THEME ITEM MODULE")
+        list: page(h("div", {}, "THEME LIST MODULE")),
+        item: page(h("div", {}, "THEME ITEM MODULE"))
     }
 });

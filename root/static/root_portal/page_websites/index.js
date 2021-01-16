@@ -1,8 +1,8 @@
-define("/page_websites/index.js", ["react", "/services.js"], (react, services) => {
+define("/page_websites/index.js", ["react", "/services.js", "/page.js"], (react, services, page) => {
     const h = react.createElement;
 
     return {
-        list: h("div", {}, "WEBSITE MODULE LIST"),
-        item: h("div", {}, "WEBSITE MODULE ITEM")
+        list: page(h("div", {}, "WEBSITE MODULE LIST")),
+        item: page(h("div", {}, "WEBSITE MODULE ITEM"))
     }
 });

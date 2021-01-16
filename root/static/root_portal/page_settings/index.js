@@ -1,5 +1,5 @@
-define("/page_settings/index.js", ["react", "/services.js"], (react, services) => {
+define("/page_settings/index.js", ["react", "/services.js", "/page.js"], (react, services, page) => {
     const h = react.createElement;
 
-    return h("div", {}, "SETTINGS MODULE")
+    return page(h("div", {}, "SETTINGS MODULE"))
 });

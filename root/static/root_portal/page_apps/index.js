@@ -1,8 +1,8 @@
-define("/page_apps/index.js", ["react", "/services.js"], (react, services) => {
+define("/page_apps/index.js", ["react", "/services.js", "/page.js"], (react, services, page) => {
     const h = react.createElement;
 
     return {
-        list: h("div", {}, "APPS LIST MODULE"),
-        item: h("div", {}, "APPS ITEM MODULE")
+        list: page(h("div", {}, "APPS LIST MODULE")),
+        item: page(h("div", {}, "APPS ITEM MODULE"))
     }
 });

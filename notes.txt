@@ -1,0 +1,15 @@
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+
+content security policy
+default-src: catch all
+child-src: webworkers
+connect-src: fetch and <a> links
+font-src: @font-source css
+frame-src: iframes
+img-src: images and photos
+media-src: audio and video html tags
+object-src <embed>, <object> and <applet> tags (set to "none")
+script-src: <script> sources
+style-src: css sources
+form-action: self
+base-uri: self

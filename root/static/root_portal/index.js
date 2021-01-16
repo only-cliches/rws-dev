@@ -12,7 +12,8 @@ require([
     "/page_security/index.js",
     "/page_modules/index.js",
     "/page_libraries/index.js",
-    "/page_apps/index.js"
+    "/page_apps/index.js",
+    "/page.js"
 ], (
         react, 
         reactDom, 
@@ -27,7 +28,8 @@ require([
         page_security,
         page_modules,
         page_libs,
-        page_apps
+        page_apps,
+        page
     ) => {
 
     const h = react.createElement;
@@ -36,8 +38,8 @@ require([
 
         const history = reactRouter.useHistory();
 
-        return  h(reactRouter.Link, {to: href, className: "home-tiles", style: { backdropFilter: "blur(4px)", "-webkit-backdropFilter": "blur(4px)", display: "inline-block", margin: 10, flexGrow: 1, border: "1px solid black"}}, 
-            h(carbon.ClickableTile, {href: "#"}, h("div", {style: {minWidth: 280, minHeight: 80, display: "flex", flexDirection: "row", justifyContent: "flex-start"}}, 
+        return  h(reactRouter.Link, {to: href, className: "home-tiles", style: { backdropFilter: "blur(4px)", "-webkit-backdropFilter": "blur(4px)", display: "inline-block", margin: 10, flexGrow: 1, color: "white"}}, 
+            h(carbon.Tile, {href: "#"}, h("div", {style: {minWidth: 280, minHeight: 80, display: "flex", flexDirection: "row", justifyContent: "flex-start"}}, 
                 h(icon, {style: {position: "relative", top: "2px"}}),
                 h("div", {style: {position: "relative", top: "-2px", marginLeft: 10}}, 
                     h("h4", {}, title),
@@ -67,7 +69,8 @@ require([
             security: "Security",
             ecommerce: "Ecommerce",
             support: "Support",
-            marketing: "Marketing"
+            marketing: "Marketing",
+            analytics: "Analyics"
         };
 
 
@@ -116,17 +119,20 @@ require([
                         h(reactRouter.Route, {exact: true, path: "/status"}, page_status), 
                         h(reactRouter.Route, {exact: true, path: "/security"}, page_security), 
                         h(reactRouter.Route, {exact: true, path: "/accounts"},
-                            h("div", {}, "accounts")
+                            page(h("div", {}, "Accounts App"))
                         ),   
                         h(reactRouter.Route, {exact: true, path: "/ecommerce"}, 
-                            h("div", {}, "ecommerce")
+                            page(h("div", {}, "Ecommerce App"))
                         ),   
                         h(reactRouter.Route, {exact: true, path: "/support"}, 
-                            h("div", {}, "support")
+                            page(h("div", {}, "Support App"))
                         ),   
                         h(reactRouter.Route, {exact: true, path: "/marketing"}, 
-                            h("div", {}, "marketing")
-                        ),   
+                            page(h("div", {}, "Marketing App"))
+                        ),  
+                        h(reactRouter.Route, {exact: true, path: "/analytics"}, 
+                            page(h("div", {}, "Analytics App"))
+                        ),    
                         h(reactRouter.Route, {exact: true, path: "/"}, 
                             h("div", {className: "options", style: {display: "flex", justifyContent: "space-evenly", flexWrap: "wrap"}}, 
                                 h(HomeTitle, {
@@ -174,14 +180,8 @@ require([
                                 h(HomeTitle, {
                                     icon: icons.Stethoscope32, 
                                     title: "Status *",
-                                    description: "View System Health",
+                                    description: "View System Health & Security",
                                     href: "/status"
-                                }),
-                                h(HomeTitle, {
-                                    icon: icons.Locked32, 
-                                    title: "Security *",
-                                    description: "Audit System Activity",
-                                    href: "/security"
                                 }),
                                 h(HomeTitle, {
                                     icon: icons.ShoppingBag32, 
@@ -200,6 +200,12 @@ require([
                                     title: "Marketing",
                                     description: "Client Outreach",
                                     href: "/marketing"
+                                }),
+                                h(HomeTitle, {
+                                    icon: icons.Analytics32, 
+                                    title: "Analytics",
+                                    description: "Track Activity & Trends",
+                                    href: "/analytics"
                                 })
                             )
                         ),  
