@@ -2,7 +2,7 @@ use std::time::UNIX_EPOCH;
 use deno_core::{ModuleId, ZeroCopyBuf, error::anyhow, json_op_sync};
 use deno_core::url::Url;
 use deno_core::error::AnyError;
-use crate::deno::metrics::Metrics;
+use crate::deno::metrics::*;
 use deno_core::{ModuleSpecifier};
 use std::{env, sync::Arc, time::SystemTime};
 use std::rc::Rc;
@@ -18,6 +18,7 @@ use std::task::Poll;
 use deno_core::futures::future::poll_fn;
 use rand::prelude::*;
 use deno_core::error::*;
+use rand::prelude::*;
 
 lazy_static! {
     static ref COMPILER_RUNTIME_JS: String = String::from(unsafe { std::str::from_utf8_unchecked(include_bytes!("compiler_runtime.js"))} );
@@ -62,6 +63,10 @@ lazy_static! {
     };
 }
 
+// DENO_OPS.iter().for_each(|(name, file) | {
+//   js_runtime.execute(name, file).unwrap();
+// });
+
 
 /// This worker is created and used by almost all
 /// subcommands in Deno executable.
@@ -71,130 +76,193 @@ lazy_static! {
 /// All `WebWorker`s created during program execution
 /// are descendants of this worker.
 pub struct MainWorker {
-    // inspector: Option<Box<DenoInspector>>,
-    pub js_runtime: JsRuntime,
-    should_break_on_first_statement: bool,
+  pub js_runtime: JsRuntime,
+  should_break_on_first_statement: bool,
 }
-  
-//   pub struct WorkerOptions {
-//     pub apply_source_maps: bool,
-//     /// Sets `Deno.args` in JS runtime.
-//     pub args: Vec<String>,
-//     pub debug_flag: bool,
-//     pub unstable: bool,
-//     pub ca_filepath: Option<String>,
-//     pub user_agent: String,
-//     pub seed: Option<u64>,
-//     // pub module_loader: Rc<dyn ModuleLoader>,
-//     // Callback that will be invoked when creating new instance
-//     // of WebWorker
-//     // pub create_web_worker_cb: Arc<rs_ops::worker_host::CreateWebWorkerCb>,
-//     pub js_error_create_fn: Option<Rc<JsErrorCreateFn>>,
-//     pub attach_inspector: bool,
-//     // pub maybe_inspector_server: Option<Arc<InspectorServer>>,
-//     pub should_break_on_first_statement: bool,
-//     /// Sets `Deno.version.deno` in JS runtime.
-//     pub runtime_version: String,
-//     /// Sets `Deno.version.typescript` in JS runtime.
-//     pub ts_version: String,
-//     /// Sets `Deno.noColor` in JS runtime.
-//     pub no_color: bool,
-//     pub get_error_class_fn: Option<GetErrorClassFn>,
-//   }
-  
-  impl MainWorker {
-    pub fn new(
-      // main_module: ModuleSpecifier,
-      // options: &WorkerOptions,
-    ) -> Self {
-      let mut js_runtime = JsRuntime::new(RuntimeOptions {
-        module_loader: None,
-        startup_snapshot: None,
-        js_error_create_fn: None,
-        get_error_class_fn: None,
-        ..Default::default()
-      });
 
-        DENO_OPS.iter().for_each(|(name, file) | {
-            js_runtime.execute(name, file).unwrap();
-        });
-  
-      let should_break_on_first_statement = false;
-  
-      let mut worker = Self {
-        js_runtime,
-        should_break_on_first_statement,
-      };
-  
-      let js_runtime = &mut worker.js_runtime;
-      {
-        // All ops registered in this function depend on these
-        {
-          let op_state = js_runtime.op_state();
-          let mut op_state = op_state.borrow_mut();
-          op_state.put::<Metrics>(Default::default());
-        //   op_state.put::<rs_ops::UnstableChecker>(rs_ops::UnstableChecker {
-        //     unstable: options.unstable,
-        //   });
-        }
+impl MainWorker {
+  pub fn new(
+    // main_module: ModuleSpecifier,
+    // permissions: Permissions,
+    // options: &WorkerOptions,
+  ) -> Self {
+    let mut js_runtime = JsRuntime::new(RuntimeOptions {
+      ..Default::default()
+    });
 
-        rs_ops::path_resolve::init(js_runtime);
-  
-        // rs_ops::runtime::init(js_runtime, main_module);
-        // rs_ops::fetch::init(
-        //   js_runtime,
-        //   options.user_agent.clone(),
-        //   options.ca_filepath.as_deref(),
-        // );
-        rs_ops::timers::init(js_runtime);
-        // rs_ops::worker_host::init(
-        //   js_runtime,
-        //   None,
-        //   options.create_web_worker_cb.clone(),
-        // );
-        rs_ops::crypto::init(js_runtime, None);
-        rs_ops::reg_json_sync(js_runtime, "op_close", deno_core::op_close);
-        rs_ops::reg_json_sync(js_runtime, "op_resources", deno_core::op_resources);
-        // rs_ops::reg_json_sync(
-        //   js_runtime,
-        //   "op_domain_to_ascii",
-        //   deno_web::op_domain_to_ascii,
-        // );
-        rs_ops::fs_events::init(js_runtime);
-        rs_ops::fs::init(js_runtime);
-        rs_ops::io::init(js_runtime);
-        // rs_ops::net::init(js_runtime);
-        // rs_ops::os::init(js_runtime);
-        // rs_ops::permissions::init(js_runtime);
-        // rs_ops::plugin::init(js_runtime);
-        // rs_ops::process::init(js_runtime);
-        // rs_ops::signal::init(js_runtime);
-        // rs_ops::tls::init(js_runtime);
-        rs_ops::tty::init(js_runtime);
-        // rs_ops::websocket::init(
-        //   js_runtime,
-        //   options.ca_filepath.as_deref(),
-        //   options.user_agent.clone(),
-        // );
-      }
+    let should_break_on_first_statement = false;
+
+    let mut worker = Self {
+      js_runtime,
+      should_break_on_first_statement,
+    };
+
+    let js_runtime = &mut worker.js_runtime;
+
+    DENO_OPS.iter().for_each(|(name, file) | {
+        js_runtime.execute(name, file).unwrap();
+    });
+    {
+      // All ops registered in this function depend on these
       {
         let op_state = js_runtime.op_state();
         let mut op_state = op_state.borrow_mut();
-        let t = &mut op_state.resource_table;
-        let (stdin, stdout, stderr) = rs_ops::io::get_stdio();
-        if let Some(stream) = stdin {
-          t.add(stream);
-        }
-        if let Some(stream) = stdout {
-          t.add(stream);
-        }
-        if let Some(stream) = stderr {
-          t.add(stream);
-        }
+        op_state.put(RuntimeMetrics::default());
+        // op_state.put::<Permissions>(permissions);
+        // op_state.put(ops::UnstableChecker {
+        //   unstable: options.unstable,
+        // });
       }
-  
-      worker
+
+      // rs_ops::runtime::init(js_runtime, main_module);
+      // rs_ops::fetch::init(
+      //   js_runtime,
+      //   options.user_agent.clone(),
+      //   options.ca_data.clone(),
+      // );
+      rs_ops::timers::init(js_runtime);
+      // rs_ops::worker_host::init(
+      //   js_runtime,
+      //   None,
+      //   options.create_web_worker_cb.clone(),
+      // );
+      let mut rng = rand::thread_rng();
+      rs_ops::crypto::init(js_runtime, Some(rng.gen()));
+      rs_ops::reg_json_sync(js_runtime, "op_close", deno_core::op_close);
+      rs_ops::reg_json_sync(js_runtime, "op_resources", deno_core::op_resources);
+      // rs_ops::reg_json_sync(
+      //   js_runtime,
+      //   "op_domain_to_ascii",
+      //   deno_web::op_domain_to_ascii,
+      // );
+      rs_ops::fs_events::init(js_runtime);
+      rs_ops::fs::init(js_runtime);
+      rs_ops::io::init(js_runtime);
+      // rs_ops::net::init(js_runtime);
+      // rs_ops::os::init(js_runtime);
+      // rs_ops::permissions::init(js_runtime);
+      // rs_ops::plugin::init(js_runtime);
+      // rs_ops::process::init(js_runtime);
+      // rs_ops::signal::init(js_runtime);
+      // rs_ops::tls::init(js_runtime);
+      rs_ops::tty::init(js_runtime);
+      // rs_ops::websocket::init(
+      //   js_runtime,
+      //   options.user_agent.clone(),
+      //   options.ca_data.clone(),
+      // );
     }
+    {
+      let op_state = js_runtime.op_state();
+      let mut op_state = op_state.borrow_mut();
+      let t = &mut op_state.resource_table;
+      let (stdin, stdout, stderr) = rs_ops::io::get_stdio();
+      if let Some(stream) = stdin {
+        t.add(stream);
+      }
+      if let Some(stream) = stdout {
+        t.add(stream);
+      }
+      if let Some(stream) = stderr {
+        t.add(stream);
+      }
+    }
+
+    worker
+  }
+
+    // pub fn new(
+    //   // main_module: ModuleSpecifier,
+    //   // options: &WorkerOptions,
+    // ) -> Self {
+    //   let mut js_runtime = JsRuntime::new(RuntimeOptions {
+    //     module_loader: None,
+    //     startup_snapshot: None,
+    //     js_error_create_fn: None,
+    //     get_error_class_fn: None,
+    //     ..Default::default()
+    //   });
+
+    //     DENO_OPS.iter().for_each(|(name, file) | {
+    //         js_runtime.execute(name, file).unwrap();
+    //     });
+  
+    //   let should_break_on_first_statement = false;
+  
+    //   let mut worker = Self {
+    //     js_runtime,
+    //     should_break_on_first_statement,
+    //   };
+  
+    //   let js_runtime = &mut worker.js_runtime;
+    //   {
+    //     // All ops registered in this function depend on these
+    //     {
+    //       let op_state = js_runtime.op_state();
+    //       let mut op_state = op_state.borrow_mut();
+    //       op_state.put::<Metrics>(Default::default());
+    //     //   op_state.put::<rs_ops::UnstableChecker>(rs_ops::UnstableChecker {
+    //     //     unstable: options.unstable,
+    //     //   });
+    //     }
+
+    //     rs_ops::path_resolve::init(js_runtime);
+  
+    //     // rs_ops::runtime::init(js_runtime, main_module);
+    //     // rs_ops::fetch::init(
+    //     //   js_runtime,
+    //     //   options.user_agent.clone(),
+    //     //   options.ca_filepath.as_deref(),
+    //     // );
+    //     rs_ops::timers::init(js_runtime);
+    //     // rs_ops::worker_host::init(
+    //     //   js_runtime,
+    //     //   None,
+    //     //   options.create_web_worker_cb.clone(),
+    //     // );
+    //     rs_ops::crypto::init(js_runtime, None);
+    //     rs_ops::reg_json_sync(js_runtime, "op_close", deno_core::op_close);
+    //     rs_ops::reg_json_sync(js_runtime, "op_resources", deno_core::op_resources);
+    //     // rs_ops::reg_json_sync(
+    //     //   js_runtime,
+    //     //   "op_domain_to_ascii",
+    //     //   deno_web::op_domain_to_ascii,
+    //     // );
+    //     rs_ops::fs_events::init(js_runtime);
+    //     rs_ops::fs::init(js_runtime);
+    //     rs_ops::io::init(js_runtime);
+    //     // rs_ops::net::init(js_runtime);
+    //     // rs_ops::os::init(js_runtime);
+    //     // rs_ops::permissions::init(js_runtime);
+    //     // rs_ops::plugin::init(js_runtime);
+    //     // rs_ops::process::init(js_runtime);
+    //     // rs_ops::signal::init(js_runtime);
+    //     // rs_ops::tls::init(js_runtime);
+    //     rs_ops::tty::init(js_runtime);
+    //     // rs_ops::websocket::init(
+    //     //   js_runtime,
+    //     //   options.ca_filepath.as_deref(),
+    //     //   options.user_agent.clone(),
+    //     // );
+    //   }
+    //   {
+    //     let op_state = js_runtime.op_state();
+    //     let mut op_state = op_state.borrow_mut();
+    //     let t = &mut op_state.resource_table;
+    //     let (stdin, stdout, stderr) = rs_ops::io::get_stdio();
+    //     if let Some(stream) = stdin {
+    //       t.add(stream);
+    //     }
+    //     if let Some(stream) = stdout {
+    //       t.add(stream);
+    //     }
+    //     if let Some(stream) = stderr {
+    //       t.add(stream);
+    //     }
+    //   }
+  
+    //   worker
+    // }
   
     pub fn bootstrap(&mut self) {
 

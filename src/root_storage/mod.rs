@@ -7,8 +7,8 @@ pub mod sqlite;
 
 lazy_static! {
     /// This is an example for using doc comment attributes
-    static ref KEY_FACTORY: NP_Factory<'static> = {
-        NP_Factory::new(r#"{
+    static ref KEY_FACTORY: NP_Factory = {
+        NP_Factory::new_json(r#"{
             "type": "tuple", 
             "sorted": true, 
             "values": [

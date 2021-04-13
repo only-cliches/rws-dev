@@ -1,20 +1,19 @@
 
+use tokio::task::LocalSet;
 use crate::root_storage::RootServerStorage;
 use deno::worker::MainWorker;
 use tokio::sync::Mutex;
-use deno_core::RuntimeOptions;
+use deno_core::{RuntimeOptions, futures::StreamExt};
 use root_storage::sqlite::SQLiteStore;
-use tokio::stream::StreamExt;
 use std::rc::Rc;
 use actix_web::{HttpResponse, guard};
-use actix_http::http::{StatusCode, header::DispositionType};
-use actix_web::http::header::ContentDisposition;
+use actix_http::http::{StatusCode};
+use actix_web::http::header::*;
 use core::cell::RefCell;
 
 use actix::{Actor, StreamHandler};
 use actix_web_actors::ws;
 use actix_web::{HttpRequest, web, Result};
-use tokio::task::LocalSet;
 use tokio::runtime::*;
 use actix_files as fs;
 use serde::{Deserialize, Serialize};
@@ -59,27 +58,27 @@ lazy_static! {
 }
 
 
-struct MyWs;
+// struct MyWs;
 
-impl Actor for MyWs {
-    type Context = ws::WebsocketContext<Self>;
-}
+// impl Actor for MyWs {
+//     type Context = ws::WebsocketContext<Self>;
+// }
 
-/// Handler for ws::Message message
-impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for MyWs {
-    fn handle(
-        &mut self,
-        msg: Result<ws::Message, ws::ProtocolError>,
-        ctx: &mut Self::Context,
-    ) {
-        match msg {
-            Ok(ws::Message::Ping(msg)) => ctx.pong(&msg),
-            Ok(ws::Message::Text(text)) => ctx.text(text),
-            Ok(ws::Message::Binary(bin)) => ctx.binary(bin),
-            _ => (),
-        }
-    }
-}
+// /// Handler for ws::Message message
+// impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for MyWs {
+//     fn handle(
+//         &mut self,
+//         msg: Result<ws::Message, ws::ProtocolError>,
+//         ctx: &mut Self::Context,
+//     ) {
+//         match msg {
+//             Ok(ws::Message::Ping(msg)) => ctx.pong(&msg),
+//             Ok(ws::Message::Text(text)) => ctx.text(text),
+//             Ok(ws::Message::Binary(bin)) => ctx.binary(bin),
+//             _ => (),
+//         }
+//     }
+// }
 
 async fn main_handler(
     // ctx: actix_web::web::Data<(RefCell<JsRuntime>, Mutex<RefCell<RocksDBStore>>)>,
@@ -145,10 +144,10 @@ async fn main_handler(
 async fn service_handler(
     // ctx: actix_web::web::Data<JsRuntime>,
     req: HttpRequest,
-    web::Path((app_name, endpoint, )): web::Path<(String, String, )>,
+    // web::Path { 0 }: web::Path<(String, String, )>,
 ) -> actix_web::HttpResponse {
 
-    println!("{} {}", app_name, endpoint);
+    //println!("{} {}", app_name, endpoint);
 
 
     actix_web::HttpResponse::Ok()
@@ -162,15 +161,22 @@ struct Dev_List_Apps {
     app_list: Vec<String>
 }
 
+#[derive(Deserialize)]
+struct Dev_Info {
+    page: String,
+    action: String
+}
+
 async fn dev_handler(
     req: HttpRequest,
-    web::Path((page, action)): web::Path<(String, String)>,
+    info: web::Path<Dev_Info>,
+    //  web::Path((page, action)): web::Path<(String, String)>,
 ) -> actix_web::HttpResponse {
 
     let mut app_dir = ROOT_DIR.clone();
     app_dir.push("apps");
 
-    match action.as_str() {
+    match info.action.as_str() {
         "list_apps" => {
 
             let mut stream = tokio::fs::read_dir(app_dir).await.unwrap();
@@ -281,8 +287,7 @@ async fn spa_handler() -> fs::NamedFile {
     index_html.push("root_portal");
     index_html.push("index.html");
 
-    let file = fs::NamedFile::open(index_html).unwrap().use_last_modified(true)
-    .set_content_disposition(ContentDisposition {
+    let file = fs::NamedFile::open(index_html).unwrap().use_last_modified(true).set_content_disposition(ContentDisposition {
         disposition: DispositionType::Inline,
         parameters: vec![],
     });
@@ -294,20 +299,30 @@ fn main() {
 
     
 
-    let mut tokio_runtime = Builder::new()
-        .basic_scheduler()
+    // let mut tokio_runtime = Builder::new_current_thread()
+    //     .enable_all()
+    //     .build()
+    //     .unwrap();
+
+    let mut tokio_runtime = Builder::new_current_thread()
+    .enable_all()
+    .build()
+    .unwrap();
+
+
+    actix_rt::System::with_tokio_rt(|| {
+        Builder::new_current_thread()
         .enable_all()
         .build()
-        .unwrap();
+        .unwrap()
+    }).block_on(async {
+    // let local = LocalSet::new();
+    // let system_fut = actix_rt::System::run_in_tokio("main", &local);
+    // local.block_on(&mut tokio_runtime, async {
+    //     tokio::task::spawn_local(system_fut);
 
-
-    let local = LocalSet::new();
-    let system_fut = actix_rt::System::run_in_tokio("main", &local);
-    local.block_on(&mut tokio_runtime, async {
-        tokio::task::spawn_local(system_fut);
-
-        let mut worker = MainWorker::new();
-        worker.bootstrap();
+    //     let mut worker = MainWorker::new();
+    //     worker.bootstrap();
 
         // worker.run_event_loop().await.unwrap();
 

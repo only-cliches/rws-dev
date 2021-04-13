@@ -32,7 +32,7 @@ impl SQLiteStore {
     }
 
     pub fn get_key_str(buffer: NP_Buffer) -> String {
-        let bytes = buffer.close_sortable().unwrap();
+        let bytes = buffer.finish().bytes();
         String::from(unsafe { std::str::from_utf8_unchecked(&bytes[..]) })
     }
 }
@@ -87,7 +87,7 @@ impl RootServerStorage for SQLiteStore {
     }
 
     async fn get(&self, namespace: &str, key: &str) -> Option<Vec<u8>> {
-        let mut key_buffer = (*KEY_FACTORY).empty_buffer(None);
+        let mut key_buffer = (*KEY_FACTORY).new_buffer(None);
         key_buffer.set(&["0"], namespace).unwrap();   
         key_buffer.set(&["1"], key).unwrap();   
 
@@ -104,7 +104,7 @@ impl RootServerStorage for SQLiteStore {
     }
 
     async fn put(&mut self, namespace: &str, key: &str, value: Vec<u8>) -> Result<(), RwsError> {
-        let mut key_buffer = (*KEY_FACTORY).empty_buffer(None);
+        let mut key_buffer = (*KEY_FACTORY).new_buffer(None);
         key_buffer.set(&["0"], namespace).unwrap();   
         key_buffer.set(&["1"], key).unwrap();   
         let db = self.db.lock().await;
@@ -120,11 +120,11 @@ impl RootServerStorage for SQLiteStore {
     }
 
     async fn scan(&self, namespace: &str, from: &str, to: &str) -> StorageCollection {
-        let mut low_buffer = (*KEY_FACTORY).empty_buffer(None);
+        let mut low_buffer = (*KEY_FACTORY).new_buffer(None);
         low_buffer.set(&["0"], namespace).unwrap();   
         low_buffer.set(&["1"], from).unwrap();   
 
-        let mut high_buffer = (*KEY_FACTORY).empty_buffer(None);
+        let mut high_buffer = (*KEY_FACTORY).new_buffer(None);
         high_buffer.set(&["0"], namespace).unwrap();   
         high_buffer.set(&["1"], to).unwrap();  
 
@@ -144,7 +144,7 @@ impl RootServerStorage for SQLiteStore {
             let data = statement.read::<Vec<u8>>(1).unwrap();
 
             if count < 101 {
-                let key_buffer = (*KEY_FACTORY).open_sortable_buffer((&*key).to_vec()).unwrap();
+                let key_buffer = (*KEY_FACTORY).open_buffer((&*key).to_vec());
                 let key_value = key_buffer.get::<String>(&["1"]).unwrap().unwrap();
                 result.push((key_value, data));
             }
@@ -160,7 +160,7 @@ impl RootServerStorage for SQLiteStore {
     }
 
     async fn all(&self, namespace: &str) -> StorageCollection {
-        let mut low_buffer = (*KEY_FACTORY).empty_buffer(None);
+        let mut low_buffer = (*KEY_FACTORY).new_buffer(None);
         low_buffer.set_min(&[]).unwrap();
         low_buffer.set(&["0"], namespace).unwrap();   
 
@@ -177,7 +177,7 @@ impl RootServerStorage for SQLiteStore {
             let data = statement.read::<Vec<u8>>(1).unwrap();
 
             if count < 101 {
-                let key_buffer = (*KEY_FACTORY).open_sortable_buffer((&*key).to_vec()).unwrap();
+                let key_buffer = (*KEY_FACTORY).open_buffer((&*key).to_vec());
                 let key_value = key_buffer.get::<String>(&["1"]).unwrap().unwrap();
                 result.push((key_value, data));
             }
@@ -194,7 +194,7 @@ impl RootServerStorage for SQLiteStore {
 
     async fn del(&mut self, namespace: &str, key: &str) -> Result<(), RwsError> {
         
-        let mut key_buffer = (*KEY_FACTORY).empty_buffer(None);
+        let mut key_buffer = (*KEY_FACTORY).new_buffer(None);
         key_buffer.set(&["0"], namespace).unwrap();   
         key_buffer.set(&["1"], key).unwrap();   
         let db = self.db.lock().await;
@@ -216,7 +216,7 @@ impl RootServerStorage for SQLiteStore {
 
             let namespace = collection.get_namespace();
 
-            let mut low_buffer = (*KEY_FACTORY).empty_buffer(None);
+            let mut low_buffer = (*KEY_FACTORY).new_buffer(None);
             low_buffer.set(&["0"], namespace.as_str()).unwrap();   
             low_buffer.set(&["1"], last_value.0).unwrap();   
 
@@ -240,7 +240,7 @@ impl RootServerStorage for SQLiteStore {
             let data = statement.read::<Vec<u8>>(1).unwrap();
 
                 if result.len() < 100 {
-                    let key_buffer = (*KEY_FACTORY).open_sortable_buffer((&*key).to_vec()).unwrap();
+                    let key_buffer = (*KEY_FACTORY).open_buffer((&*key).to_vec());
                     let key_value = key_buffer.get::<String>(&["1"]).unwrap().unwrap();
                     result.push((key_value, data));
                 }

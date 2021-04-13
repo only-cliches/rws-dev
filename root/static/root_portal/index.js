@@ -137,8 +137,8 @@ require([
                             h("div", {className: "options", style: {display: "flex", justifyContent: "space-evenly", flexWrap: "wrap"}}, 
                                 h(HomeTitle, {
                                     icon: icons.UserAvatar32, 
-                                    title: "Accounts", 
-                                    description: "Root & System Users",
+                                    title: "Clients", 
+                                    description: "CRM & Marketing",
                                     href: "/accounts"
                                 }),
                                 h(HomeTitle, {
@@ -153,18 +153,18 @@ require([
                                     description: "Control Panel / Admin Themes",
                                     href: "/themes"
                                 }),
-                                h(HomeTitle, {
-                                    icon: icons.Application32, 
-                                    title: "Applications *",
-                                    description: "Available Apps & Utilities",
-                                    href: "/apps"
-                                }),
-                                h(HomeTitle, {
-                                    icon: icons.Chip32, 
-                                    title: "Modules *",
-                                    description: "Native Backend Modules",
-                                    href: "/modules"
-                                }),
+                                // h(HomeTitle, { // move to website as subpage
+                                //     icon: icons.Application32, 
+                                //     title: "Applications *",
+                                //     description: "Available Apps & Utilities",
+                                //     href: "/apps"
+                                // }),
+                                // h(HomeTitle, { // move to website as subpage
+                                //     icon: icons.Chip32, 
+                                //     title: "Modules *",
+                                //     description: "Native Backend Modules",
+                                //     href: "/modules"
+                                // }),
                                 h(HomeTitle, {
                                     icon: icons.Plug32, 
                                     title: "Libraries *",
@@ -183,30 +183,30 @@ require([
                                     description: "View System Health & Security",
                                     href: "/status"
                                 }),
-                                h(HomeTitle, {
-                                    icon: icons.ShoppingBag32, 
-                                    title: "Ecommerce",
-                                    description: "Products, Billing & Invoicing",
-                                    href: "/ecommerce"
-                                }),
-                                h(HomeTitle, {
-                                    icon: icons.ServiceDesk32, 
-                                    title: "Support",
-                                    description: "Client Chat & Tickets",
-                                    href: "/support"
-                                }),
-                                h(HomeTitle, {
-                                    icon: icons.Chat32, 
-                                    title: "Marketing",
-                                    description: "Client Outreach",
-                                    href: "/marketing"
-                                }),
-                                h(HomeTitle, {
-                                    icon: icons.Analytics32, 
-                                    title: "Analytics",
-                                    description: "Track Activity & Trends",
-                                    href: "/analytics"
-                                })
+                                // h(HomeTitle, { // subpage of accounts
+                                //     icon: icons.ShoppingBag32, 
+                                //     title: "Ecommerce",
+                                //     description: "Products, Billing & Invoicing",
+                                //     href: "/ecommerce"
+                                // }),
+                                // h(HomeTitle, { // subpage of accounts
+                                //     icon: icons.ServiceDesk32, 
+                                //     title: "Support",
+                                //     description: "Client Chat & Tickets",
+                                //     href: "/support"
+                                // }),
+                                // h(HomeTitle, { // subpage of accounts
+                                //     icon: icons.Chat32, 
+                                //     title: "Marketing",
+                                //     description: "Client Outreach",
+                                //     href: "/marketing"
+                                // }),
+                                // h(HomeTitle, {
+                                //     icon: icons.Analytics32, 
+                                //     title: "Analytics",
+                                //     description: "Track Activity & Trends",
+                                //     href: "/analytics"
+                                // })
                             )
                         ),  
                         h(reactRouter.Route, {path: "*"}, h("h2", {}, "Nothing Here (404)"))

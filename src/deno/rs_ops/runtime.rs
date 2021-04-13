@@ -1,6 +1,8 @@
-// Copyright 2018-2020 the Deno authors. All rights reserved. MIT license.
+// Copyright 2018-2021 the Deno authors. All rights reserved. MIT license.
 
-use crate::deno::metrics::Metrics;
+use crate::deno::metrics::OpMetrics;
+use crate::deno::metrics::RuntimeMetrics;
+// use crate::ops::UnstableChecker;
 // use crate::permissions::Permissions;
 use deno_core::error::AnyError;
 use deno_core::serde_json;
@@ -16,46 +18,37 @@ pub fn init(rt: &mut deno_core::JsRuntime, main_module: ModuleSpecifier) {
     let mut state = op_state.borrow_mut();
     state.put::<ModuleSpecifier>(main_module);
   }
-  // super::reg_json_sync(rt, "op_main_module", op_main_module);
+  super::reg_json_sync(rt, "op_main_module", op_main_module);
   super::reg_json_sync(rt, "op_metrics", op_metrics);
 }
 
-// fn op_main_module(
-//   state: &mut OpState,
-//   _args: Value,
-//   _zero_copy: &mut [ZeroCopyBuf],
-// ) -> Result<Value, AnyError> {
-//   let main = state.borrow::<ModuleSpecifier>().to_string();
-//   let main_url = ModuleSpecifier::resolve_url_or_path(&main)?;
-//   if main_url.as_url().scheme() == "file" {
+fn op_main_module(
+  state: &mut OpState,
+  _args: Value,
+  _zero_copy: &mut [ZeroCopyBuf],
+) -> Result<Value, AnyError> {
+  let main = state.borrow::<ModuleSpecifier>().to_string();
+  let main_url = deno_core::resolve_url_or_path(&main)?;
+//   if main_url.scheme() == "file" {
 //     let main_path = std::env::current_dir().unwrap().join(main_url.to_string());
 //     state
 //       .borrow::<Permissions>()
 //       .check_read_blind(&main_path, "main_module")?;
 //   }
-//   Ok(json!(&main))
-// }
+  Ok(json!(&main))
+}
 
+#[allow(clippy::unnecessary_wraps)]
 fn op_metrics(
   state: &mut OpState,
   _args: Value,
   _zero_copy: &mut [ZeroCopyBuf],
 ) -> Result<Value, AnyError> {
-  let m = state.borrow::<Metrics>();
-
-  Ok(json!({
-    "opsDispatched": m.ops_dispatched,
-    "opsDispatchedSync": m.ops_dispatched_sync,
-    "opsDispatchedAsync": m.ops_dispatched_async,
-    "opsDispatchedAsyncUnref": m.ops_dispatched_async_unref,
-    "opsCompleted": m.ops_completed,
-    "opsCompletedSync": m.ops_completed_sync,
-    "opsCompletedAsync": m.ops_completed_async,
-    "opsCompletedAsyncUnref": m.ops_completed_async_unref,
-    "bytesSentControl": m.bytes_sent_control,
-    "bytesSentData": m.bytes_sent_data,
-    "bytesReceived": m.bytes_received
-  }))
+  let m = state.borrow::<RuntimeMetrics>();
+  let combined = m.combined_metrics();
+  // let unstable_checker = state.borrow::<UnstableChecker>();
+  let maybe_ops: Option<std::collections::HashMap<&str, OpMetrics>> = None;
+  Ok(json!({ "combined": combined, "ops": maybe_ops }))
 }
 
 pub fn ppid() -> Value {
